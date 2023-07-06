@@ -1,26 +1,48 @@
+"use client";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import { RecoilRoot } from "recoil";
+import React from "react";
+import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const metadata = {
-  title: "Cek Top CareFinder",
-  description: "Find hospitals around you",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <RecoilRoot>
+      <Head>
+        <title>MedCare Finder</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Find hospitals around you with ease"
+        />
+      </Head>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body>{children}</body>
       </html>
     </RecoilRoot>
   );
 }
 
-export { metadata };
+export default RootLayout;
+
+// const inter = Inter({ subsets: ["latin"] });
+
+// const metadata = {
+//   title: "Cek Top CareFinder",
+//   description: "Find hospitals around you",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <RecoilRoot>
+//       <html lang="en">
+//         <body>{children}</body>
+//       </html>
+//     </RecoilRoot>
+//   );
+// }
+
+// export { metadata };
