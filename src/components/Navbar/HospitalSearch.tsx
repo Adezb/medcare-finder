@@ -8,7 +8,7 @@ import {
   BiChevronLeft,
   BiChevronRight,
 } from "react-icons/bi";
-import { auth, db } from "@/firebase/firebase";
+import { auth } from "@/firebase/firebase";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useAuthState } from "react-firebase-hooks/auth";

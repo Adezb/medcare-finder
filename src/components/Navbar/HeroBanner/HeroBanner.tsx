@@ -1,6 +1,7 @@
 "use client";
 import { authModalAtom } from "@/atoms/authModalAtom";
 import { useSetRecoilState } from "recoil";
+import Image from "next/image";
 
 type HeroBannerProps = {};
 
@@ -32,12 +33,20 @@ const HeroBanner: React.FC<HeroBannerProps> = () => {
           </div>
         </div>
         <div className="md:w-1/2 mt-8 md:mt-0 hidden md:block">
-          <img
+          <Image
+            src="/doctor-2.jpeg"
+            alt="Medical Doctor"
+            width={500}
+            height={500}
+            loading="lazy"
+            className="w-full h-auto"
+          />
+          {/* <img
             src="doctor-2.jpeg"
             alt="Medical Doctor"
             loading="lazy"
             className="w-full h-auto"
-          />
+          /> */}
         </div>
       </div>
     </>

@@ -3,9 +3,9 @@ import { IoIosClose } from "react-icons/io";
 import Login from "./Login";
 import Signup from "./Signup";
 import ResetPassword from "./ResetPassword";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { authModalAtom } from "@/atoms/authModalAtom";
-import useCloseModal from "@/hooks/useCloseModal";
+import useCloseModal from "@/hook/useCloseModal";
 
 type AuthModalProps = {};
 

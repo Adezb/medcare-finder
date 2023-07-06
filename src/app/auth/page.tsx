@@ -7,13 +7,9 @@ import { authModalAtom } from "@/atoms/authModalAtom";
 import { auth } from "@/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
 import HeroBanner from "@/components/Navbar/HeroBanner/HeroBanner";
 
-type pageProps = {};
-
-const page: React.FC<pageProps> = () => {
+const Page = () => {
   const authModal = useRecoilValue(authModalAtom);
   const [user, loading, error] = useAuthState(auth);
   const [pageLoading, setPageLoading] = useState(true);
@@ -37,4 +33,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;
