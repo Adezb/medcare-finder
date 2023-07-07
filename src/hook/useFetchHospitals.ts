@@ -46,19 +46,11 @@ function useFetchHospitals() {
         const q = query(collection(db, "hospitals"), where("city", "==", city), orderBy("name", "asc"), limit(perPage));
         try {
             const querySnapshot = await getDocs(q);
-            const hospitals: Hospital[] = [];
-            querySnapshot.forEach((doc) => {
-                hospitals.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    address: doc.data().address,
-                    city: doc.data().city,
-                    ownership: doc.data().ownership,
-                    phone: doc.data().phone,
-                    email: doc.data().email
-                });
-            });
-            setHospitals(hospitals);
+            const hospitals = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }))
+            setHospitals((prev) => [...prev, ...hospitals] as Hospital[]);
             setLoading(false);
             //If the city entered is not in the database
             if (hospitals.length === 0) {
@@ -67,12 +59,9 @@ function useFetchHospitals() {
                     setMessage("");
                 }, 3000);
                 return;
-            }
-           
-            
+            }  
         
         } catch (error: any) {
-            console.log(error);
             setMessage(error.message);
         }
     };
@@ -83,52 +72,31 @@ function useFetchHospitals() {
         const q = query(collection(db, "hospitals"), orderBy("name", "asc"), startAfter(FieldValue), limit(perPage));
         try {
             const querySnapshot = await getDocs(q);
-            const hospitals: Hospital[] = [];
-            querySnapshot.forEach((doc) => {
-                hospitals.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    address: doc.data().address,
-                    city: doc.data().city,
-                    ownership: doc.data().ownership,
-                    phone: doc.data().phone,
-                    email: doc.data().email
-                });
-            });
-            setHospitals(hospitals);
+            const hospitals = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }))
+            setHospitals((prev) => [...prev, ...hospitals] as Hospital[]);
             setLoading(false);
         } catch (error: any) {
-            console.log(error);
             setMessage(error.message);
         }
 
         
     };
 
-    console.log(hospitals[0]);
-    console.log(hospitals[3]);
-
     const fetchPreviousHospitals = async () => {
         
         const q = query(collection(db, "hospitals"), orderBy("name", "asc"), endBefore(FieldValue), limitToLast(perPage));
         try {
             const querySnapshot = await getDocs(q);
-            const hospitals: Hospital[] = [];
-            querySnapshot.forEach((doc) => {
-                hospitals.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    address: doc.data().address,
-                    city: doc.data().city,
-                    ownership: doc.data().ownership,
-                    phone: doc.data().phone,
-                    email: doc.data().email
-                });
-            });
-            setHospitals(hospitals);
+            const hospitals = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }))
+            setHospitals((prev) => [...prev, ...hospitals] as Hospital[]);
             setLoading(false);
         } catch (error: any) {
-            console.log(error);
             setMessage(error.message);
         }
     };

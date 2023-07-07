@@ -25,7 +25,7 @@ const Page = () => {
     <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-screen relative">
       <div className="max-w-7x1 mx-auto">
         <Navbar />
-        <div className="flex items-center justify-center h-[calc(100vh-5rem)] select-none mt-10 sm:mt-5 xs:mt-5 ">
+        <div className="mt-10 select-none">
           <HeroBanner />
         </div>
         {authModal.isOpen && <AuthModal />}
