@@ -14,15 +14,15 @@ function useBackToTop() {
    };
 
    useEffect(() => {
-    typeof window.addEventListener("scroll", scrollToTop);
-    return () =>  window.removeEventListener("scroll", scrollToTop);
+    globalThis.window.addEventListener("scroll", scrollToTop);
+    return () =>  globalThis.window.removeEventListener("scroll", scrollToTop);
    });
 
    const backToTop = () => {
-   typeof window.scrollTo({ top: 0, behavior: "smooth" });
+    globalThis.window.scrollTo({ top: 0, behavior: "smooth" });
    };
 
-  typeof window.addEventListener("scroll", scrollToTop);
+   globalThis.window.addEventListener("scroll", scrollToTop);
 
     return { isScrollVisible, backToTop };
     
