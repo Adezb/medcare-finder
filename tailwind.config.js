@@ -14,6 +14,7 @@ export const theme = {
       "gray-transparent-dark": "rgba(0, 0, 0, 0.5)",
       "gray-transparent-light": "rgba(0, 0, 0, 0.2)",
       "gray-dark": "#333333",
+      "gray-dark-one": "#393E46",
       "primary-light": "#F2F2F2",
       "sky-blue": "#00B4FF",
       "btn-blue": "#007AFF",

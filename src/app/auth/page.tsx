@@ -26,7 +26,7 @@ const Page = () => {
     <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-screen relative mb-0">
       <div className="max-w-7x1 mx-auto">
         <Navbar />
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-blue-500">
           <div className="mt-10 select-none">
             <HeroBanner />
           </div>

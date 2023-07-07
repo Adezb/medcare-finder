@@ -11,6 +11,7 @@ import {
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import useFetchHospitals from "@/hook/useFetchHospitals";
+import Image from "next/image";
 
 type HospitalSearchProps = {};
 
@@ -72,34 +73,52 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                 hospitals.map((hospital) => (
                   <div
                     key={hospital.id}
-                    className="border-2 border-gray-300 rounded-md mt-2 p-1 sm:p-3 bg-gray-dark max-w-full sm:max-w-sm"
+                    className=" flex flex-col rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-gray-dark-one m-1"
                   >
-                    <div className="flex flex-row items-end justify-start">
-                      <div className="flex flex-col items-start">
-                        <p className="font-bold text-btn-blue text-xl sm:text-sm p-1 ">
+                    <div className="sm:flex sm:justify-between sm:gap-4">
+                      <div>
+                        <h3 className="text-lg font-bold sm:text-xl text-btn-blue">
                           {hospital.name}
-                        </p>
-                        <p className="text-gray-light text-sm ">
-                          {hospital.address}
-                        </p>
-                        <p className="text-gray-light text-sm">
-                          {hospital.city}
-                        </p>
-                        <p className="text-gray-light text-sm">
+                        </h3>
+                        <p className="mt-1 text-xs font-medium text-white">
                           {hospital.ownership}
                         </p>
-                        <p className="text-gray-light text-sm">
-                          {hospital.phone}
-                        </p>
-                        <p className="text-gray-light text-sm">
-                          {hospital.email}
-                        </p>
                       </div>
-                      <div className="flex flex-row ml-2">
-                        <button className="bg-btn-blue px-1 py-2 mr-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out">
+                      <div className="hidden sm:block sm:shrink-0">
+                        <Image
+                          src="/red-cross.png"
+                          alt="Red Cross"
+                          width={200}
+                          height={200}
+                          className="h-16 w-16 rounded-lg object-cover shadow-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <p className="max-w-[40ch] text-sm text-white">
+                        {hospital.address}
+                      </p>
+                      <p className="max-w-[40ch] text-sm text-white">
+                        {hospital.city}
+                      </p>
+                      <p className="max-w-[40ch] text-sm text-white">
+                        {hospital.email}
+                      </p>
+                      <p className="max-w-[40ch] text-sm text-white">
+                        {hospital.phone}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex gap-4 sm:gap-6">
+                      <div className="flex flex-col-reverse">
+                        <button className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out">
                           <BiShareAlt />
                         </button>
-                        <button className="bg-btn-blue p-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out">
+                      </div>
+
+                      <div className="flex flex-col-reverse">
+                        <button className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out">
                           <BiExport />
                         </button>
                       </div>
