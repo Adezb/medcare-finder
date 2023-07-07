@@ -39,7 +39,7 @@ function useFetchHospitals() {
              setMessage("Please enter a city");
             setTimeout(() => {
              setMessage("");
-              }, 3000);
+              }, 5000);
                return;
           }
          setLoading(true);
@@ -57,7 +57,7 @@ function useFetchHospitals() {
                 setMessage(`No hospital data found for ${city}`);
                 setTimeout(() => {
                     setMessage("");
-                }, 3000);
+                }, 5000);
                 return;
             }  
         
