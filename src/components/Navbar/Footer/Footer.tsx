@@ -4,18 +4,13 @@ import { BsArrowUpCircle } from "react-icons/bs";
 import useBackToTop from "@/hook/useBackToTop";
 
 const Footer = () => {
-  const { backToTop } = useBackToTop();
   return (
     <footer className="bg-gray-dark mt-auto">
       <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
           <button className="inline-block rounded-full bg-white p-2 text-btn-blue shadow transition hover:bg-gray-light sm:p-3 lg:p-4">
             <span className="sr-only">Back to top</span>
-            <BsArrowUpCircle
-              onClick={backToTop}
-              className="h-6 w-6"
-              aria-hidden="true"
-            />
+            <BsArrowUpCircle className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
         <div className="lg:flex lg:items-end lg:justify-between">
