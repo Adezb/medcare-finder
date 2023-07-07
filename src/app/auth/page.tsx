@@ -22,7 +22,7 @@ const Page = () => {
 
   if (pageLoading) return null;
   return (
-    <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-screen relative">
+    <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-screen relative mb-0">
       <div className="max-w-7x1 mx-auto">
         <Navbar />
         <div className="mt-10 select-none">

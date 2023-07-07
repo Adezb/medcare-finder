@@ -96,7 +96,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
 
   return (
     <>
-      <form className="space-y-5 px-6 pb-2" onSubmit={handleAddHospital}>
+      <form className="space-y-5 px-1 pb-5 " onSubmit={handleAddHospital}>
         <h3 className="text-xl font-medium text-gray-dark">
           New Hospital Entry
         </h3>

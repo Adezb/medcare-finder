@@ -3,7 +3,7 @@ import { BsArrowUpCircle } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-dark">
+    <footer className="bg-gray-dark mb-0">
       <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
           <Link
