@@ -8,6 +8,7 @@ import { auth } from "@/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
 import HeroBanner from "@/components/Navbar/HeroBanner/HeroBanner";
+import Footer from "@/components/Navbar/Footer/Footer";
 
 const Page = () => {
   const authModal = useRecoilValue(authModalAtom);
@@ -25,10 +26,13 @@ const Page = () => {
     <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-screen relative mb-0">
       <div className="max-w-7x1 mx-auto">
         <Navbar />
-        <div className="mt-10 select-none">
-          <HeroBanner />
+        <div className="min-h-screen flex flex-col">
+          <div className="mt-10 select-none">
+            <HeroBanner />
+          </div>
         </div>
         {authModal.isOpen && <AuthModal />}
+        <Footer />
       </div>
     </div>
   );
