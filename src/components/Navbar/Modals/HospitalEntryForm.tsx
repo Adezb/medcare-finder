@@ -22,6 +22,11 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleSelectInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  console.log(inputs);
+
   const [user] = useAuthState(auth);
   const router = useRouter();
 
@@ -135,33 +140,73 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
 
         <div>
           {/* Hospital City */}
-          <input
+          <select
             required
-            onChange={handleChangInput}
-            type="text"
+            onChange={handleSelectInput}
             name="city"
             id="city"
             className="
                    border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5
                    bg-gray-600 border-gray-500 placeholder-gray-400 text-white
                "
-            placeholder="City"
-          />
+          >
+            {/* Cities in Nigeria */}
+            <option value="">Select City</option>
+            <option value="Abuja">Abuja</option>
+            <option value="Abia">Abia</option>
+            <option value="Adamawa">Adamawa</option>
+            <option value="Akwa Ibom">Akwa Ibom</option>
+            <option value="Anambra">Anambra</option>
+            <option value="Bauchi">Bauchi</option>
+            <option value="Bayelsa">Bayelsa</option>
+            <option value="Benue">Benue</option>
+            <option value="Borno">Borno</option>
+            <option value="Cross River">Cross River</option>
+            <option value="Delta">Delta</option>
+            <option value="Ebonyi">Ebonyi</option>
+            <option value="Edo">Edo</option>
+            <option value="Ekiti">Ekiti</option>
+            <option value="Enugu">Enugu</option>
+            <option value="Gombe">Gombe</option>
+            <option value="Imo">Imo</option>
+            <option value="Jigawa">Jigawa</option>
+            <option value="Kaduna">Kaduna</option>
+            <option value="Kano">Kano</option>
+            <option value="Katsina">Katsina</option>
+            <option value="Kebbi">Kebbi</option>
+            <option value="Kogi">Kogi</option>
+            <option value="Kwara">Kwara</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Nasarawa">Nasarawa</option>
+            <option value="Niger">Niger</option>
+            <option value="Ogun">Ogun</option>
+            <option value="Ondo">Ondo</option>
+            <option value="Osun">Osun</option>
+            <option value="Oyo">Oyo</option>
+            <option value="Plateau">Plateau</option>
+            <option value="Rivers">Rivers</option>
+            <option value="Sokoto">Sokoto</option>
+            <option value="Taraba">Taraba</option>
+            <option value="Yobe">Yobe</option>
+            <option value="Zamfara">Zamfara</option>
+          </select>
         </div>
         <div>
           {/* Hospital Ownership*/}
-          <input
+          <select
             required
-            onChange={handleChangInput}
-            type="text"
+            onChange={handleSelectInput}
             name="ownership"
             id="ownership"
             className="
                    border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5
                    bg-gray-600 border-gray-500 placeholder-gray-400 text-white
                "
-            placeholder="Ownership e.g Private, Public"
-          />
+          >
+            <option value="">Select Ownership</option>
+            <option value="Public">Public</option>
+            <option value="Private">Private</option>
+          </select>
         </div>
         <div>
           {/* Hospital Phone*/}
@@ -213,3 +258,18 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
   );
 };
 export default HospitalEntryForm;
+
+{
+  /* <input
+            required
+            onChange={handleChangInput}
+            type="text"
+            name="ownership"
+            id="ownership"
+            className="
+                   border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5
+                   bg-gray-600 border-gray-500 placeholder-gray-400 text-white
+               "
+            placeholder="Ownership e.g Private, Public"
+          /> */
+}
