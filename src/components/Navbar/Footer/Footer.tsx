@@ -56,7 +56,13 @@ const Footer = () => {
           </ul>
         </div>
         <p className="mt-12 text-center text-sm text-gray-light lg:text-right">
-          Copyright &copy; {new Date().getFullYear()}. All rights reserved.
+          MedCare Finder &copy; {new Date().getFullYear()}. All rights reserved.
+        </p>
+        <p className="mt-2 text-center text-sm text-gray-light lg:text-right">
+          Developed by{" "}
+          <Link href="twitter.com/adezb_CEO" className="text-sky-500">
+            Adezb - Cek Top Ventures Ltd.
+          </Link>
         </p>
       </div>
     </footer>

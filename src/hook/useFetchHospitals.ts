@@ -9,7 +9,6 @@ import {
     orderBy,
     limitToLast,
     endBefore,
-    FieldValue,
   } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 
@@ -29,10 +28,13 @@ import { db } from "@/firebase/firebase";
 
 function useFetchHospitals() {
     const [loading, setLoading] = useState(true);
-   const [message, setMessage] = useState<string | null>(null);
+    const [message, setMessage] = useState<string | null>(null);
     const [hospitals, setHospitals] = useState<Hospital[]>([]);
+
+  
      
     const perPage = 4;
+
 
     const handleSearchHospital = async (city: string) => {
         if (city.trim() === "") {
@@ -59,11 +61,11 @@ function useFetchHospitals() {
                     setMessage("");
                 }, 5000);
                 return;
-            }  
-        
+            }
         } catch (error: any) {
             setMessage(error.message);
         }
+        //
     };
 
 
@@ -108,7 +110,7 @@ function useFetchHospitals() {
     //handle Search Hospital
    
 
-    return { loading, message, hospitals, fetchMoreHospitals, fetchPreviousHospitals, handleSearchHospital,  };
+    return { loading, message, hospitals, fetchMoreHospitals, fetchPreviousHospitals, handleSearchHospital };
 
 }
 

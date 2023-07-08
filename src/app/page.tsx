@@ -1,5 +1,6 @@
 import Topbar from "@/components/Navbar/Topbar/Topbar";
 import HospitalSearch from "@/components/Navbar/HospitalSearch";
+import About from "@/components/Navbar/About/About";
 import Footer from "@/components/Navbar/Footer/Footer";
 
 export default function Home() {
