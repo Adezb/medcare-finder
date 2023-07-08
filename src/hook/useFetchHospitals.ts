@@ -43,7 +43,7 @@ function useFetchHospitals() {
                return;
           }
          setLoading(true);
-        const q = query(collection(db, "hospitals"), where("city", "==", city), orderBy("name", "asc"), limit(perPage));
+        const q = query(collection(db, "hospitals"), where("city", "==", city), orderBy("name", "asc"));
         try {
             const querySnapshot = await getDocs(q);
             const hospitals = querySnapshot.docs.map((doc) => ({
@@ -68,8 +68,10 @@ function useFetchHospitals() {
 
 
     const fetchMoreHospitals = async () => {
+        //Get the last visible document
+        const lastVisible = ("name");
         
-        const q = query(collection(db, "hospitals"), orderBy("name", "asc"), startAfter(FieldValue), limit(perPage));
+        const q = query(collection(db, "hospitals"), orderBy("name", "asc"), startAfter(lastVisible), limit(perPage));
         try {
             const querySnapshot = await getDocs(q);
             const hospitals = querySnapshot.docs.map((doc) => ({
@@ -81,13 +83,15 @@ function useFetchHospitals() {
         } catch (error: any) {
             setMessage(error.message);
         }
-
+      console.log(startAfter("name"));
         
     };
 
     const fetchPreviousHospitals = async () => {
+        //Get the first visible document
+        // const firstVisible = hospitals[0];
         
-        const q = query(collection(db, "hospitals"), orderBy("name", "asc"), endBefore(FieldValue), limitToLast(perPage));
+        const q = query(collection(db, "hospitals"), orderBy("name", "asc"), endBefore("createdAt"), limitToLast(perPage));
         try {
             const querySnapshot = await getDocs(q);
             const hospitals = querySnapshot.docs.map((doc) => ({

@@ -31,7 +31,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
   const handleAddHospital = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // validate the hospital name
-    const format = /[!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?]+/;
+    const format = /[!@#$%^*()_+\=\[\]{};':"\\|,.<>\/?]+/;
     if (format.test(inputs.name)) {
       setMessages("Hospital name cannot contain special characters");
       // clear the message after 3 seconds

@@ -130,7 +130,7 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                 <span></span>
               )}
               {/* Display Previous and Next button after showing list of hospitals */}
-              {hospitals.length > 0 && (
+              {/* {hospitals.length > 0 && (
                 <div className="mt-5 flex items-center justify-center">
                   <button
                     className="bg-btn-blue p-2 mr-5 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out"
@@ -145,7 +145,7 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                     <BiChevronRight />
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
