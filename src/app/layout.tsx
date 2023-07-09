@@ -15,6 +15,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
           content="Find hospitals around you with ease"
         />
       </Head>
+
       <html lang="en">
         <body>{children}</body>
       </html>

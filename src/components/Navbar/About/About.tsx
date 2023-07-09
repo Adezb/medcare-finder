@@ -24,7 +24,7 @@ const About: React.FC<AboutProps> = () => {
             />
           </div>
           <div className="lg:py-16 bg-gray-dark-one rounded-md p-2">
-            <article className="space-y-4 text-gray-light">
+            <div className="space-y-4 text-gray-light">
               <p>
                 MedCare Finder is a platform that helps you find the best
                 hospitals and medical centers near you.
@@ -38,7 +38,7 @@ const About: React.FC<AboutProps> = () => {
                 We also provide you with the contact details of the hospitals
                 and medical centers, so you can easily reach out to them.
               </p>
-            </article>
+            </div>
           </div>
         </div>
       </div>

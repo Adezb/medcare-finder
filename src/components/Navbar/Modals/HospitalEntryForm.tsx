@@ -42,7 +42,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
       // clear the message after 3 seconds
       setTimeout(() => {
         setMessages("");
-      }, 5000);
+      }, 3000);
 
       return;
     }
@@ -50,7 +50,11 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
     const hospitalDocRef = doc(db, "hospitals", inputs.name);
     const hospitalDocSnap = await getDoc(hospitalDocRef);
     if (hospitalDocSnap.exists()) {
-      alert(`${inputs.name} already exists`);
+      setMessages(`${inputs.name} already exists`);
+      // clear the message after 5 seconds
+      setTimeout(() => {
+        setMessages("");
+      }, 3000);
       return;
     }
 
@@ -58,7 +62,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
 
     // check if user is logged in before creating hospital
     if (!user) {
-      alert("You must be logged in to create a hospital");
+      alert("You must be logged in to register a hospital");
       setLoading(false);
       router.push("/auth");
       return;
@@ -76,7 +80,11 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
         createdAt: new Date(),
       });
       //set success message and clear message after 3 seconds
-      setMessages(`${inputs.name} created successfully. Press ESC to close`);
+      setTimeout(() => {
+        setMessages(
+          `${inputs.name} created successfully. Click outside to close`
+        );
+      }, 3000);
       // clear the input fields
       setInputs({
         name: "",
@@ -86,9 +94,6 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
         phone: "",
         email: "",
       });
-      setTimeout(() => {
-        setMessages("");
-      }, 5000);
     } catch (error: any) {
       setMessages(error.message);
     }
@@ -258,18 +263,3 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
   );
 };
 export default HospitalEntryForm;
-
-{
-  /* <input
-            required
-            onChange={handleChangInput}
-            type="text"
-            name="ownership"
-            id="ownership"
-            className="
-                   border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5
-                   bg-gray-600 border-gray-500 placeholder-gray-400 text-white
-               "
-            placeholder="Ownership e.g Private, Public"
-          /> */
-}
