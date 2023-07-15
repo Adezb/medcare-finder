@@ -1,25 +1,9 @@
 "use client";
 import { useState, ChangeEvent } from "react";
-import HospitalEntryForm from "./Modals/HospitalEntryForm";
 import About from "./About/About";
-import { CSVLink } from "react-csv";
-
-import {
-  WhatsappShareButton,
-  FacebookShareButton,
-  TwitterShareButton,
-  EmailShareButton,
-} from "react-share";
-import {
-  BiShareAlt,
-  BiExport,
-  BiChevronLeft,
-  BiChevronRight,
-} from "react-icons/bi";
-import { FaWhatsapp, FaFacebook, FaTwitter, FaSpinner } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
+import Dashboard from "./Dashboard/Dashboard";
+import ShareHospital from "./Share/ShareHospital";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import useFetchHospitals from "@/hook/useFetchHospitals";
 import Image from "next/image";
 import { auth } from "@/firebase/firebase";
@@ -39,24 +23,6 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
     handleSearchHospital,
   } = useFetchHospitals(city);
 
-  const exportHospitals = () => {
-    const csvData = hospitals.map((hospital) => {
-      return [
-        hospital.name,
-        hospital.ownership,
-        hospital.address,
-        hospital.city,
-        hospital.email,
-        hospital.phone,
-      ];
-    });
-    const csvLink = new CSVLink({
-      data: csvData,
-      filename: "hospitals.csv",
-    });
-    return csvLink;
-  };
-
   const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setCity(e.target.value);
@@ -72,19 +38,6 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
     <>
       <div className="min-h-screen flex flex-col">
         <div className="p-10 text-center mt-10">
-          <Popup
-            trigger={
-              <button className="bg-btn-blue p-2 mt-2 sm:px-4 rounded-md text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out">
-                Add New Hospital
-              </button>
-            }
-            modal
-            nested
-            closeOnEscape={true}
-            closeOnDocumentClick={true}
-          >
-            <HospitalEntryForm />
-          </Popup>
           {/* Input tag for hospital search and select tag for city option div */}
           <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center mt-5">
             <input
@@ -143,7 +96,7 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
           </div>
 
           {message ? (
-            <p className="border-2 border-gray-300 rounded-md p-2 mt-2 bg-gray-transparent-dark text-gray-light">
+            <p className="border-2 border-gray-300 rounded-md p-2 mt-2 bg-gray-transparent-light text-gray-light">
               {message}
             </p>
           ) : null}
@@ -152,53 +105,8 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
               {/* User Dashboard with share button, export hospitals button and add hospital button */}
               <>
                 {user ? (
-                  <div className="flex flex-row justify-center gap-5">
-                    {/* Share buttons using share icon and react-share */}
-
-                    <div className="flex flex-row gap-3 bg-gray-transparent-light px-4 py-2 rounded-md ">
-                      <BiShareAlt size={30} />
-                      <WhatsappShareButton
-                        url="https://medcare-finder-app.vercel.app/"
-                        title="Medcare Finder App"
-                        className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out"
-                        content={`${hospitals}` + `found in ${city}`}
-                      >
-                        <FaWhatsapp size={18} color="green" />
-                      </WhatsappShareButton>
-
-                      <FacebookShareButton
-                        url="https://medcare-finder-app.vercel.app/"
-                        quote="Medcare Finder App"
-                        className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out"
-                      >
-                        <FaFacebook size={18} color="blue" />
-                      </FacebookShareButton>
-
-                      <TwitterShareButton
-                        url="https://medcare-finder-app.vercel.app/"
-                        title="Medcare Finder App"
-                        className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out"
-                        content={`${hospitals}` + `found in ${city}`}
-                      >
-                        <FaTwitter size={18} color="skyblue" />
-                      </TwitterShareButton>
-
-                      <EmailShareButton
-                        url="https://medcare-finder-app.vercel.app/"
-                        subject="Medcare Finder App"
-                        className="bg-btn-blue px-1 py-2 sm:px-4 rounded text-sm font-medium hover:text-btn-blue hover:bg-white hover:border-2 hover:border-btn-blue border-2 border-transparent transition duration-300 ease-in-out"
-                        content={`${hospitals}` + `found in ${city}`}
-                      >
-                        <AiOutlineMail size={18} />
-                      </EmailShareButton>
-                    </div>
-
-                    {/* Export button using react-csv */}
-                    <button className="bg-gray-transparent-light px-2 py-2 sm:px-4 rounded-md text-sm font-medium border-transparent">
-                      <CSVLink data={hospitals} filename={"hospitals.csv"}>
-                        <BiExport size={30} />
-                      </CSVLink>
-                    </button>
+                  <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 bg-gray-transparent-dark rounded-md">
+                    <Dashboard />
                   </div>
                 ) : (
                   <p className="text-gray-dark-one text-lg sm:text-sm">
@@ -247,6 +155,14 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                           {hospital.phone}
                         </p>
                       </div>
+                      {/* if user display share hospital component else nothing */}
+                      {user ? (
+                        <>
+                          <ShareHospital />
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   ))
                 : // Span message with border, background and text color
