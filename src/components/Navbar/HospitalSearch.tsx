@@ -142,11 +142,11 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
             </select>
           </div>
 
-          {/* {message ? (
+          {message ? (
             <p className="border-2 border-gray-300 rounded-md p-2 mt-2 bg-gray-transparent-dark text-gray-light">
               {message}
             </p>
-          ) : null} */}
+          ) : null}
           <div className="mt-5 flex items-center justify-center">
             <div className="flex flex-col">
               {/* User Dashboard with share button, export hospitals button and add hospital button */}
