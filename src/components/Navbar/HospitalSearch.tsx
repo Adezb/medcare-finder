@@ -201,7 +201,9 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                     </button>
                   </div>
                 ) : (
-                  ""
+                  <p className="text-gray-dark-one text-lg sm:text-sm">
+                    Login to share, export and add new hospitals
+                  </p>
                 )}
               </>
 
