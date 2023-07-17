@@ -3,11 +3,12 @@ import { useState, ChangeEvent } from "react";
 import About from "./About/About";
 import Dashboard from "./Dashboard/Dashboard";
 import ShareHospital from "./Share/ShareHospital";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { BiChevronLeft, BiChevronRight, BiExport } from "react-icons/bi";
 import useFetchHospitals from "@/hook/useFetchHospitals";
 import Image from "next/image";
 import { auth } from "@/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { CSVLink } from "react-csv";
 
 type HospitalSearchProps = {};
 
@@ -154,6 +155,10 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                         <p className="max-w-[40ch] text-sm text-white">
                           {hospital.phone}
                         </p>
+                        {/* Added by createdBy */}
+                        <span className="max-w-[40ch] text-xs text-gray-light">
+                          Added by: {hospital.createdBy}
+                        </span>
                       </div>
                       {/* if user display share hospital component else nothing */}
                       {user ? (
@@ -167,7 +172,21 @@ const HospitalSearch: React.FC<HospitalSearchProps> = () => {
                   ))
                 : // Span message with border, background and text color
                   " "}
-              {/* Fetch more hospital on scroll down */}
+              {/* if user display export button else display nothing */}
+              {user && city !== "" ? (
+                <div>
+                  <button className="flex flex-col bg-gray-transparent-light px-4 py-1 rounded-md max-w-max mx-auto mt-2 text-center ">
+                    <CSVLink data={hospitals} filename={"hospital.csv"}>
+                      <div className="ml-12">
+                        <BiExport size={20} />
+                      </div>
+                      <span className="text-gray-light">Export Hospitals</span>
+                    </CSVLink>
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="mt-2">

@@ -14,6 +14,7 @@ import { db } from "@/firebase/firebase";
 
 
 
+
   type Hospital = {
     id: string;
     name: string;
@@ -22,6 +23,7 @@ import { db } from "@/firebase/firebase";
     ownership: string;
     phone: string;
     email: string;
+    createdBy: string;
   };
 
 
@@ -45,7 +47,7 @@ function useFetchHospitals( city: string) {
                 setHospitals(hospitals as Hospital[]);
                 setLoading(false);
                 if (hospitals.length === 0) {
-                    setMessage(`No hospital data found for ${city}`);
+                    setMessage(`No hospital data found for ${city}`); 
                     setTimeout(() => {
                         setMessage("");
                     }, 3000);
@@ -117,9 +119,9 @@ function useFetchHospitals( city: string) {
         }
     }
 
-    
-    //handle Search Hospital
    
+    //handle Search Hospital
+
 
     return { loading, message, hospitals, fetchMoreHospitals, fetchPreviousHospitals, handleSearchHospital };
 

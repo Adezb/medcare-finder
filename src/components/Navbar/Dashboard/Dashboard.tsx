@@ -3,18 +3,13 @@ import HospitalEntryForm from "../Modals/HospitalEntryForm";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { FaHospital } from "react-icons/fa";
-import { CSVLink } from "react-csv";
-import { BiExport } from "react-icons/bi";
 import { auth } from "@/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import useFetchHospitals from "@/hook/useFetchHospitals";
 
 type DashboardProps = {};
 
 const Dashboard: React.FC<DashboardProps> = () => {
   const [user] = useAuthState(auth);
-  const { hospitals } = useFetchHospitals("");
-
   return (
     <header>
       <div>
@@ -44,13 +39,6 @@ const Dashboard: React.FC<DashboardProps> = () => {
             >
               <HospitalEntryForm />
             </Popup>
-            {/* Export Hospital and Share Hospital */}
-            <button className="bg-gray-transparent-light px-2 py-2 sm:px-4 rounded-md text-sm font-medium border-transparent inline-flex items-center justify-center">
-              <CSVLink data={hospitals} filename={"hospitals.csv"}>
-                <BiExport size={30} className="sm:text-center text-white" />
-                <span className="text-gray-light">Export</span>
-              </CSVLink>
-            </button>
           </div>
         </div>
       </div>

@@ -14,8 +14,8 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
     address: "",
     city: "",
     ownership: "",
-    phone: "",
-    email: "",
+    phone: "" || "Not Available",
+    email: "" || "Not Available",
   });
 
   const handleChangInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +76,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
         ownership: inputs.ownership,
         phone: inputs.phone,
         email: inputs.email,
-        createdBy: user.uid,
+        createdBy: user.displayName ? user.displayName : user.email,
         createdAt: new Date(),
       });
       //set success message and clear message after 3 seconds
@@ -107,9 +107,7 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
   return (
     <>
       <form className="space-y-5 px-1 pb-5 " onSubmit={handleAddHospital}>
-        <h3 className="text-xl font-medium text-gray-dark">
-          Register a Hospital
-        </h3>
+        <h3 className="text-xl font-medium text-gray-dark">Add a Hospital</h3>
         <div>
           {/* Hospital Name */}
           <input
@@ -216,7 +214,6 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
         <div>
           {/* Hospital Phone*/}
           <input
-            required
             onChange={handleChangInput}
             type="text"
             name="phone"
@@ -231,7 +228,6 @@ const HospitalEntryForm: React.FC<HospitalEntryFormProps> = ({}) => {
         <div>
           {/* Hospital email*/}
           <input
-            required
             onChange={handleChangInput}
             type="text"
             name="email"
